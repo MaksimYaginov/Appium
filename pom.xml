@@ -25,18 +25,6 @@
                 <suiteFile>nativeTest.xml</suiteFile>
             </properties>
         </profile>
-        <profile>
-            <id>web</id>
-            <properties>
-                <suiteFile>webTest.xml</suiteFile>
-            </properties>
-        </profile>
-        <profile>
-            <id>all</id>
-            <properties>
-                <suiteFile>allTests.xml</suiteFile>
-            </properties>
-        </profile>
     </profiles>
     <build>
         <plugins>
