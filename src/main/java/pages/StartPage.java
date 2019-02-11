@@ -21,7 +21,7 @@ public class StartPage {
     }
 
     public LeftMenu goToLeftMenu() {
-        horizontalSwipe(driver, 0.01, 0.8, 0.5, 0);
+        horizontalSwipe(driver, 0.01, 0.7, 0.5, 1);
 
         return new LeftMenu(driver);
     }
