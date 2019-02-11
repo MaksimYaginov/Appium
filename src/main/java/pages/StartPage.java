@@ -3,21 +3,26 @@ package pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 
-import static helpers.Waiters.waitUntilElementVisible;
+import static helpers.Helper.horizontalSwipe;
 
 public class StartPage {
 
     private AndroidDriver driver;
 
-    @AndroidFindBy(uiAutomator = "com.alibaba.aliexpresshd:id/ll_main")
+    @AndroidFindBy(id = "com.alibaba.aliexpresshd:id/ll_main")
     private MobileElement mainWindow;
 
     public StartPage(AndroidDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
+    }
 
-        waitUntilElementVisible(driver, mainWindow);
+    public LeftMenu goToLeftMenu() {
+        horizontalSwipe(driver, 0.01, 0.8, 0.5, 0);
+
+        return new LeftMenu(driver);
     }
 }

@@ -12,8 +12,4 @@ public class Waiters {
     public static void waitUntilElementVisible(AndroidDriver driver, MobileElement mobileElement) {
         new WebDriverWait(driver, EXPLICITLY_WAIT).until(ExpectedConditions.visibilityOf(mobileElement));
     }
-
-    public static void waitUntilElementClickable(AndroidDriver driver, MobileElement mobileElement) {
-        new WebDriverWait(driver, EXPLICITLY_WAIT).until(ExpectedConditions.elementToBeClickable(mobileElement));
-    }
 }

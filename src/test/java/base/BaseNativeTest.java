@@ -1,4 +1,4 @@
-package test.java.base;
+package base;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,18 +15,16 @@ public class BaseNativeTest {
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
-
-        capabilities.setCapability("app", "9e6704b4-0026-41fb-a630-0043c0dafc68/Ali.apk");
-        capabilities.setCapability("deviceName", "Android Device");
+        capabilities.setCapability("deviceName", "Google Pixel 9.0 -US");
+        capabilities.setCapability("platform", "Android");
+        capabilities.setCapability("forceMjsonwp", "True");
+        capabilities.setCapability("bitbar_project", "Appium Cloud");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("bitbar_apiKey", "xi1gWPoR0SEMCmFjuRXxa1xdrqx5MgEK");
-
-        //capabilities.setCapability("bitbar_username", "www.estet1995@mail.ru");
-        //capabilities.setCapability("bitbar_password", "Vfrcbv1995");
-        capabilities.setCapability("bitbar_project", "Project 3");
-        capabilities.setCapability("bitbar_testrun", "Test Run 1");
+        capabilities.setCapability("bitbar_target", "Android");
+        capabilities.setCapability("bitbar_testrun", "Test Run");
         capabilities.setCapability("bitbar_device", "Google Pixel 9.0 -US");
-        capabilities.setCapability("bitbar_app", "9e6704b4-0026-41fb-a630-0043c0dafc68/Ali.apk");
+        capabilities.setCapability("bitbar_app", "8698f60b-720b-47bf-bc70-036e7a9b8f6e/Ali.apk");
+        capabilities.setCapability("bitbar_apiKey", "xi1gWPoR0SEMCmFjuRXxa1xdrqx5MgEK");
     }
 
     @BeforeMethod(alwaysRun = true)

@@ -1,15 +1,12 @@
-package test.java.nativeApp;
+package nativeApp;
 
-import static helpers.Helper.horizontalSwipe;
-
+import base.BaseNativeTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LeftMenu;
 import pages.StartPage;
-import test.java.base.BaseNativeTest;
 
-
-public class AppiumLocatorsTests extends BaseNativeTest {
+public class SwipeTest extends BaseNativeTest {
 
     private StartPage startPage;
     private LeftMenu leftMenu;
@@ -18,11 +15,11 @@ public class AppiumLocatorsTests extends BaseNativeTest {
     public void testSwipe() {
         startPage = new StartPage(driver);
 
-        leftMenu = horizontalSwipe(driver, 0.01, 0.7, 0.5, 1);
+        leftMenu = startPage.goToLeftMenu();
 
         Assert.assertTrue(leftMenu.leftMenuIsVisible(), "Menu not opened");
 
-        startPage = horizontalSwipe(driver, 0.7, 0.01, 0.5, 1);
+        leftMenu.closeLeftMenu();
 
         Assert.assertTrue(!leftMenu.leftMenuIsVisible(), "Menu not closed");
     }

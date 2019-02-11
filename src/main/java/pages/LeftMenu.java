@@ -1,28 +1,39 @@
 package pages;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 
-import static helpers.Helper.byResourceId;
+import org.openqa.selenium.NoSuchElementException;
+
+import static helpers.Helper.horizontalSwipe;
 import static helpers.Waiters.waitUntilElementVisible;
 
 public class LeftMenu {
 
     private AndroidDriver driver;
 
-    @AndroidFindBy(uiAutomator = "com.alibaba.aliexpresshd:id/navdrawer")
-    private MobileElement leftMenu;
+    @AndroidFindBy(id = "com.alibaba.aliexpresshd:id/navdrawer")
+    private AndroidElement leftMenu;
 
-    public LeftMenu(AndroidDriver driver, MobileElement leftMenu) {
-        this.driver = driver;;
-        PageFactory.initElements(driver, this);
+    LeftMenu(AndroidDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
 
-        waitUntilElementVisible(driver, this.leftMenu);
+        waitUntilElementVisible(driver, leftMenu);
     }
 
-    public boolean leftMenuIsVisible(){
-        return leftMenu.isDisplayed();
+    public boolean leftMenuIsVisible() {
+        try {
+            return leftMenu.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void closeLeftMenu() {
+        horizontalSwipe(driver, 0.7, 0.01, 0.5, 0);
     }
 }
